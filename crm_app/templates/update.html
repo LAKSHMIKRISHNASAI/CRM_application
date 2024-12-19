@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content%}
+<body>
+    <div class='container bg-light shadow-md p-5 justify-content-center form-layout'>
+    
+        <h3 align='center' class='justify-content-center'>Update Your record</h3>
+
+        <form method='POST' autocomplete='off'>
+            {% csrf_token %}
+            {{form.first_name|as_crispy_field}}
+            <br>
+            {{form.last_name|as_crispy_field}}
+            <br>
+            {{form.email|as_crispy_field}}
+            <br>
+            {{form.phone|as_crispy_field}}
+            <br>
+            {{form.city|as_crispy_field}}
+            <br>
+            {{form.province|as_crispy_field}}
+            <br>
+            {{form.country|as_crispy_field}}
+            {% comment %} {{form|crispy}} {% endcomment %}
+            <br>
+        
+            <button type='submit' class='btn btn-info'>update record &nbsp; </button>
+
+            <a href='{% url "dashboard" %}' class='btn btn-secondary'>Return</a>
+            &nbsp; 
+        </form>
+    
+            {% comment %} &nbsp; <i 'fa fa-arrow-left' aria-hidden='true'></i> {% endcomment %}
+    </div>
+
+</body>
+{% endblock %}
+
+
+        

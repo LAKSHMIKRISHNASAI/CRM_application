@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content%}
+<body>
+    <div class='container bg-light shadow-md p-5 justify-content-center form-layout'>
+    
+        <h3 align='center' class='justify-content-center'>Welcome to dashboard {{user}}!</h3>
+        {% comment %} <div class='justify-content-center'> {% endcomment %}
+        <form method='POST' action=''>
+            {% csrf_token %}
+            <hr>
+            {{form.first_name|as_crispy_field}}
+            <br>
+            {{form.last_name|as_crispy_field}}
+            <br>
+            {{form.email|as_crispy_field}}
+            <br>
+            {{form.phone|as_crispy_field}}
+            <br>
+            {{form.city|as_crispy_field}}
+            <br>
+            {{form.province|as_crispy_field}}
+            <br>
+            {{form.country|as_crispy_field}}
+            {% comment %} {{form|crispy}} {% endcomment %}
+            <br>
+            {% comment %} {{form.creation_time|as_crispy_field}} {% endcomment %}
+            {% comment %} <br> {% endcomment %}
+        
+            <button type='submit' class='btn btn-primary btn-block w-100 p-2 shadow-md'>Save &nbsp; </button>
+            
+            &nbsp;
+            <br>
+            <a href={% url 'dashboard' %} class='btn btn-secondary'>Return &nbsp; <i class='fa fa-arrow-left' aria-hidden='true'></i></a>
+        </form>
+    </div>
+</body>
+{% endblock %}

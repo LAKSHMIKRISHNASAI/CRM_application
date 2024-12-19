@@ -1,0 +1,13 @@
+#container{
+    background-color: rgb(181, 152, 247);
+}
+
+h3{
+    background-color: rgb(222, 214, 250);
+}
+
+.form-layout{
+    width:500px;
+    border-radius: 20px;
+
+}

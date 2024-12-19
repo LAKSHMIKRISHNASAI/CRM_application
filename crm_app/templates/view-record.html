@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content%}
+
+    <div class='card'>
+        <div class='card-body'>
+            {% comment %} {% csrf_token %} {% endcomment %}
+            <i class='fa fa-user-circle-o' aria-hidden='true'></i>&nbsp;
+
+            <strong>
+                {{all_records.first_name|upper}}
+                {{all_records.last_name|upper}}
+            
+            </strong>
+            <hr>
+            <p><strong>ID:</strong></p>{{all_records.id}}<br>
+            <p><strong>Email:</strong></p>{{all_records.email}}<br>
+            <p><strong>Phone:</strong></p>{{all_records.phone}}<br>
+            <p><strong>city:</strong></p>{{all_records.city}}<br>
+            <p><strong>province:</strong></p>{{all_records.province}}<br>
+            <p><strong>country:</strong></p>{{all_records.country}}<br>
+        </div>
+
+    </div>
+    <br>
+    <a href="{% url 'dashboard' %}" class="btn btn-secondary"> Return &nbsp; <i class="fa fa-arrow-left" aria-hidden="true"></i> </a>
+    &nbsp;
+    <a href={% url 'update_record' all_records.id %} class='btn btn-info'> Update Record &nbsp; <i class='fa fa-plus' aria-hidden='true'></i>
+    &nbsp;
+    <a href={% url 'delete_record' all_records.id %} class='btn btn-warning'> Delete Record &nbsp; <i class='fa fa-plus' aria-hidden='true'></i>
+        &nbsp;
+
+{% endblock%}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content%}
+<body>
+    <div class='bg-light shadow-md p-5'>
+    {% csrf_token %}
+    <h3 align='center' class='justify-content-center'>Welcome to dashboard {{user}}!</h3>
+    
+    {% comment %} first let's create a button which used to create new record, and below of button make a table to show data. {% endcomment %}
+
+    {% comment %} <button type='button' class='btn btn-outline-primary p-2 btn-shadow'> {% endcomment %}
+    <a class='btn btn-outline-primary p-2 btn-shadow' href={% url 'create_record' %} style='text-decoration:none'>Create new record</a>
+    <hr>
+
+    <table class='table table-light table-hover'>
+        <thead class='table-light'>
+
+            <tr>
+                <th style='font-weight:bold' scope='col'>id</th>
+               
+                <th style='font-weight:bold' scope='col'>Name</th>
+                {% comment %} <th scope='col'>Last Name</th> {% endcomment %}
+                <th style='font-weight:bold' scope='col'>Email</th>
+                <th style='font-weight:bold' scope='col'>Phone</th>
+                <th style='font-weight:bold' scope='col'>City</th>
+                <th style='font-weight:bold' scope='col'>Province</th>
+                <th style='font-weight:bold' scope='col'>Country</th>
+                <th style='font-weight:bold' scope='col'>Creation Time</th>
+                <th style='font-weight:bold' scope='col'>View</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for record in records %}
+            <tr>
+                <td>{{record.id}}</td>
+                <td>{{record.first_name}} {{record.last_name}}</td>
+                
+                <td>{{record.email}}</td>
+                <td>{{record.phone}}</td>
+                <td>{{record.city}}</td>
+                <td>{{record.province}}</td>
+                <td>{{record.country}}</td>
+                <td>{{record.creation_time}}</td>
+                <td><a href={% url 'view_record' record.id %}>Edit</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        
+    </table>
+
+    {% comment %} when clicks on create new record then form empty fields will activate. {% endcomment %}
+    
+    </div>
+</body>
+{% endblock %}

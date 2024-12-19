@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% comment %} {% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM_application</title>
+    <link rel='stylesheet' type='text/css' href="https://bootswatch.com/5/flatly/bootstrap.min.css">
+ 
+    <link rel='stylesheet' type='text/css' href={% static 'css/style.css' %}>
+</head>
+
+<body> {% endcomment %}
+{% block content %} 
+    <body>
+        <div class='container bg-light shadow-md p-5 form-layout'>
+            <h3 class='justify-content-center' align='center'>Create your account here!</h3><br>
+
+            <hr>
+            <form method='post' action=''>
+                {% csrf_token %}
+                {% comment %} {{form|crispy}} {% endcomment %}
+
+                {{form.username|as_crispy_field}}
+
+                <br>
+                {{form.email|as_crispy_field}}
+                <br>
+
+                {{form.password1|as_crispy_field}}
+
+                <br>
+
+                {{form.password2|as_crispy_field}}
+                <br>
+                {% comment %} {{form.as_p}} {% endcomment %}
+            <button class='btn btn-primary w-100 p-2 btn-block' type='submit'>Submit</button>
+            </form>
+        <div class='text-center'>
+            <h5>Already have an account?</h5><a href="{% url 'login' %}">Login</a>
+        </div>
+        </div>
+    </body>
+    {% comment %} <script>
+        onclick.submit().addEventListener('click',()=>{
+
+        })
+        function submit(){
+
+        }
+    </script> {% endcomment %}
+{% endblock %}
